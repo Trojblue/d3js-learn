@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>D3 Page Template</title>
+    <script type="text/javascript" src="d3.js"></script>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<!-- css定义:
+.bar {
+    display: inline-block;
+    width: 20px;
+    height: 75px;
+    /* We'll override height later */
+    background-color: teal;
+    margin-right: 2px; 
+} -->
+
+<body>
+    <p>随机生成25个数字, 然后生成条形图; 条形图的css在./css/styles.css里面定义</p>
+
+    <script type="text/javascript">
+        var dataset = []; 
+        for (var i = 0; i < 25; i++) {
+            var newNumber = Math.floor(Math.random() * 30);   
+            dataset.push(newNumber);      
+        }    
+        
+        d3.select("body").selectAll("div").data(dataset)
+        .enter().append("div").attr("class", "bar")
+        .style("height", function(d) {    return d + "px"; })
+        .style("height", function(d) {
+                var barHeight = d * 5;
+                return barHeight + "px";
+        }); ; ;
+
+    </script>
+    <div class="bar"></div>
+
+</body>
+
+</html>
