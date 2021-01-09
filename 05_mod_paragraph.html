@@ -9,13 +9,22 @@
 		<script type="text/javascript">
 		
 			var dataset = [ 5, 10, 15, 20, 25 ];
+
+			var namedFunction = function(data){
+				return data + data*3;
+			}
 			
 			d3.select("body").selectAll("p")
 				.data(dataset)
 				.enter()
 				.append("p")
-				.text(function(d) {
-					return "I can count up to " + d;
+				.text(namedFunction)
+				.style("color", function(d){
+					if (d>10){
+						return "red";
+					}else{
+						return "blue";
+					}
 				});
 			
 		</script>
